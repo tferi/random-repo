@@ -12,7 +12,7 @@ class ParsingSpec extends Specification {
   "country csv" should {
     "be parsed with an expected element present" in {
       val expected = Country("HU", "Hungary")
-      val resourceUrl: String = "/countries.csv"
+      val resourceUrl: String = Config.test.countriesUrl
 
       elementIsParsedFromResource(expected, resourceUrl)
     }
@@ -21,7 +21,7 @@ class ParsingSpec extends Specification {
   "airport csv" should {
     "be parsed with an expected element present" in {
       val expected = Airport("LHBP", "Budapest Ferenc Liszt International Airport", "HU")
-      val resourceUrl: String = "/airports.csv"
+      val resourceUrl: String = Config.test.airportsUrl
 
       elementIsParsedFromResource(expected, resourceUrl)
     }
@@ -30,7 +30,7 @@ class ParsingSpec extends Specification {
   "country csv" should {
     "be parsed with an expected element present" in {
       val expected = Runway("236449", "LHBP", "CON")
-      val resourceUrl: String = "/runways.csv"
+      val resourceUrl: String = Config.test.runwaysUrl
 
       elementIsParsedFromResource(expected, resourceUrl)
     }
