@@ -12,4 +12,8 @@ class AirportRepo(resourceUrl: String) {
   def byCountryCode(countryCode: String): List[Airport] =
     airportsByCountryCode.getOrElse(countryCode, Nil)
 
+  def countsByCountry = airportsByCountryCode.map {
+    case (country, airportList) => country -> airportList.length
+  }
+
 }
