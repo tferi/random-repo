@@ -12,23 +12,23 @@ class CmdInterfaceSpec extends Specification {
   "Cmd Interface" should {
 
     "print the help text on init" in {
-      executedWith("") must startWith(CmdInterface.helptext)
+      outputOf("") must startWith(CmdInterface.helptext)
     }
 
     "print the help text on invalid input" in {
-      executedWith("invalid") must startWith(welcomeMessage + CmdInterface.helptext)
+      outputOf("invalid") must startWith(welcomeMessage + CmdInterface.helptext)
     }
 
     "have an expected country in the report" in {
-      executedWith("report") must contain("Hungary")
+      outputOf("report") must contain("Hungary")
     }
 
     "have an expected airport in the query" in {
-      executedWith("query hu") must contain("Budapest Ferenc Liszt International Airport")
+      outputOf("query hu") must contain("Budapest Ferenc Liszt International Airport")
     }
   }
 
-  def executedWith(input: String): String = {
+  def outputOf(input: String): String = {
     val in = strToInputStream(input)
     val out: ByteArrayOutputStream = new ByteArrayOutputStream()
     val print = new PrintStream(out, true)
