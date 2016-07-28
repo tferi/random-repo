@@ -38,10 +38,11 @@ object Main {
     val printStream: PrintStream = System.out
 
     processQueries(queryService, inputStream, printStream)
-    printReport(reportService, printStream)
+    printTopBottomReport(reportService, printStream)
+	  printRunwaysByCount(reportService, printStream)
   }
 
-  private def printReport(reportService: ReportService, out: PrintStream): Unit = {
+  private def printTopBottomReport(reportService: ReportService, out: PrintStream): Unit = {
 
     def printCountry(country: Country, count: Int): Unit = {
       out.println(s"${country.name} with $count airports.")
@@ -55,8 +56,13 @@ object Main {
 
     out.println("Bottom countries:")
     bottom.foreach(print)
-
   }
+
+	private def printRunwaysByCount(reportService: ReportService, out: PrintStream): Unit = {
+		reportService.runwayTypesByCountry.foreach {
+			case (country, runways) => out.println(s"Runways in ${country.name}: ${runways.mkString(", ")}")
+		}
+	}
 
   private def processQueries(queryService: QueryService, in: InputStream, out: PrintStream): Unit = {
     Using(Source.fromInputStream(in)) { reader =>

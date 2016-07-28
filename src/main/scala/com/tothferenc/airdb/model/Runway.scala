@@ -6,7 +6,7 @@ import com.tothferenc.airdb.parsing.CsvLineParser
 final case class Runway(
   id: String,
   airportIdent: String,
-  surface: String //TODO
+  surface: String
 )
 
 object Runway {

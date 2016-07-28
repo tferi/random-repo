@@ -25,4 +25,13 @@ class ReportService(
     val highest = airportCountByCountryAsc.drop(countryCount - bottom).flatMap(countryResolver)
     highest -> lowest
   }
+
+	def runwayTypesByCountry: List[(Country, List[String])] = {
+		countryRepo.all.map { country =>
+			val runwayTypes = airportRepo.byCountryCode(country.code).flatMap { airport =>
+				runwayRepo.byAirportIdent(airport.ident).map(_.surface)
+			}.distinct
+			country -> runwayTypes
+		}
+	}
 }

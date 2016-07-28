@@ -16,4 +16,6 @@ class CountryRepo(resourceUrl: String) {
 
   def byCode(code: String): Option[Country] =
     countriesByCode.get(code.toUpperCase()).flatMap(_.headOption)
+
+  def all: List[Country] = countries
 }
