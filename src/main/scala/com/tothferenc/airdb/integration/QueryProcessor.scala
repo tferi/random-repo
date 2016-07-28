@@ -4,8 +4,8 @@ import java.io.PrintStream
 
 import com.tothferenc.airdb.service.QueryService
 
-class QueryProcessor(queryService: QueryService, out: PrintStream) {
-  def printQueryResult(line: String): Unit = {
+class QueryProcessor(queryService: QueryService) {
+  def printQueryResult(line: String)(implicit out: PrintStream): Unit = {
     val result = queryService.query(line.trim)
     result.foreach {
       case (airport, runways) =>

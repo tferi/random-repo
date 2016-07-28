@@ -5,9 +5,14 @@ import java.io.PrintStream
 import com.tothferenc.airdb.model.Country
 import com.tothferenc.airdb.service.ReportService
 
-class ReportProcessor(reportService: ReportService, out: PrintStream) {
+class ReportProcessor(reportService: ReportService) {
 
-  def printTopBottomReport(): Unit = {
+  def printReports()(implicit out: PrintStream): Unit = {
+    printTopBottomReport()
+    printRunwaysByCountry()
+  }
+
+  def printTopBottomReport()(implicit out: PrintStream): Unit = {
 
     def printCountry(country: Country, count: Int): Unit = {
       out.println(s"${country.name} with $count airports.")
@@ -18,12 +23,15 @@ class ReportProcessor(reportService: ReportService, out: PrintStream) {
 
     out.println("Top countries:")
     top.foreach(print)
+    out.println()
 
     out.println("Bottom countries:")
     bottom.foreach(print)
+    out.println()
   }
 
-  def printRunwaysByCountry(): Unit = {
+  def printRunwaysByCountry()(implicit out: PrintStream): Unit = {
+    out.println("Runway types by country")
     reportService.runwayTypesByCountry.foreach {
       case (country, runways) => out.println(s"Runways in ${country.name}: ${runways.mkString(", ")}")
     }

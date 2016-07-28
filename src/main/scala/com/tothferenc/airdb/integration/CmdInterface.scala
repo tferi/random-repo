@@ -7,10 +7,15 @@ import com.tothferenc.airdb.util.Using
 
 import scala.io.Source
 
+object CmdInterface {
+  val helptext: String = "Please type `report` or `query $country` to interact with the application or CTRL + D to exit."
+}
+
 class CmdInterface(queryProcessor: QueryProcessor, reportProcessor: ReportProcessor) {
 
-  def runWith(in: InputStream, out: PrintStream): Unit = {
-    val helptext: String = "Please type `report` or `query $country` to interact with the applicationor CTRL + D to exit."
+  import CmdInterface._
+
+  def runWith(implicit in: InputStream, out: PrintStream): Unit = {
     out.println(helptext)
     Using(Source.fromInputStream(in)) { reader =>
       reader.getLines().foreach {
