@@ -7,7 +7,7 @@ import com.tothferenc.airdb.service.ReportService
 
 class ReportProcessor(reportService: ReportService, out: PrintStream) {
 
-  def printTopBottomReport(reportService: ReportService, out: PrintStream): Unit = {
+  def printTopBottomReport(): Unit = {
 
     def printCountry(country: Country, count: Int): Unit = {
       out.println(s"${country.name} with $count airports.")
@@ -23,7 +23,7 @@ class ReportProcessor(reportService: ReportService, out: PrintStream) {
     bottom.foreach(print)
   }
 
-  def printRunwaysByCountry(reportService: ReportService, out: PrintStream): Unit = {
+  def printRunwaysByCountry(): Unit = {
     reportService.runwayTypesByCountry.foreach {
       case (country, runways) => out.println(s"Runways in ${country.name}: ${runways.mkString(", ")}")
     }
