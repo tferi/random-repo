@@ -1,10 +1,9 @@
-package com.tothferenc.airdb
+package com.tothferenc.airdb.parsing
 
+import com.tothferenc.airdb.Config
 import com.tothferenc.airdb.model.Airport
 import com.tothferenc.airdb.model.Country
 import com.tothferenc.airdb.model.Runway
-import com.tothferenc.airdb.parsing.Csv
-import com.tothferenc.airdb.parsing.CsvLineParser
 import org.specs2.mutable.Specification
 
 class ParsingSpec extends Specification {
