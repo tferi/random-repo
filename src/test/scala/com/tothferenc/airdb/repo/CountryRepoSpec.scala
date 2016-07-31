@@ -2,6 +2,7 @@ package com.tothferenc.airdb.repo
 
 import com.tothferenc.airdb.Config
 import com.tothferenc.airdb.model.Country
+import com.tothferenc.airdb.repo.impl.CsvBasedCountryRepo
 import org.specs2.mutable.Specification
 
 class CountryRepoSpec extends Specification {

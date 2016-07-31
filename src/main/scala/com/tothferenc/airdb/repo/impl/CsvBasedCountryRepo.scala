@@ -1,7 +1,8 @@
-package com.tothferenc.airdb.repo
+package com.tothferenc.airdb.repo.impl
 
 import com.tothferenc.airdb.model.Country
 import com.tothferenc.airdb.parsing.Csv
+import com.tothferenc.airdb.repo.CountryRepo
 
 class CsvBasedCountryRepo(resourceUrl: String) extends CountryRepo {
 
