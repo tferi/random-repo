@@ -5,7 +5,7 @@ import com.tothferenc.airdb.parsing.Csv
 
 class CountryRepo(resourceUrl: String) {
 
-  private val countries = Csv.parseStream[Country](getClass.getResourceAsStream(resourceUrl)).toList
+  private val countries = Csv.parseStream[Country](getClass.getResourceAsStream(resourceUrl)).toVector
 
   private val countriesByUcName = countries.groupBy(_.name.toUpperCase())
 
@@ -17,5 +17,5 @@ class CountryRepo(resourceUrl: String) {
   def byCode(code: String): Option[Country] =
     countriesByCode.get(code.toUpperCase()).flatMap(_.headOption)
 
-  def all: List[Country] = countries
+  def all: Vector[Country] = countries
 }

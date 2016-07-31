@@ -5,11 +5,11 @@ import com.tothferenc.airdb.parsing.Csv
 
 class RunwayRepo(resourceUrl: String) {
 
-  private val runways = Csv.parseStream[Runway](getClass.getResourceAsStream(resourceUrl)).toList
+  private val runways = Csv.parseStream[Runway](getClass.getResourceAsStream(resourceUrl)).toVector
 
   private val runwaysByAirportIdent = runways.groupBy(_.airportIdent)
 
-  def byAirportIdent(airportIdent: String): List[Runway] =
-    runwaysByAirportIdent.getOrElse(airportIdent, Nil)
+  def byAirportIdent(airportIdent: String): Vector[Runway] =
+    runwaysByAirportIdent.getOrElse(airportIdent, Vector.empty)
 
 }

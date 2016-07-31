@@ -12,9 +12,9 @@ class QueryService(
     runwayRepo: RunwayRepo
 ) {
 
-  def query(country: String): Iterable[(Airport, List[Runway])] = {
+  def query(country: String): Iterable[(Airport, Vector[Runway])] = {
     for {
-      country <- countryRepo.byCode(country).orElse(countryRepo.byName(country)).toList
+      country <- countryRepo.byCode(country).orElse(countryRepo.byName(country)).toVector
       airport <- airportRepo.byCountryCode(country.code)
     } yield {
       airport -> runwayRepo.byAirportIdent(airport.ident)

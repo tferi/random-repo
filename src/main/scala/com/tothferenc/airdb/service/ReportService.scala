@@ -27,7 +27,7 @@ class ReportService(
     highest -> lowest
   }
 
-  def runwayTypesByCountry: List[(Country, List[String])] = {
+  def runwayTypesByCountry: Vector[(Country, Vector[String])] = {
     countryRepo.all.map { country =>
       val runwayTypes = airportRepo.byCountryCode(country.code).flatMap { airport =>
         runwayRepo.byAirportIdent(airport.ident).map(_.surface)
