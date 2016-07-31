@@ -2,9 +2,7 @@ package com.tothferenc.airdb.service
 
 import com.tothferenc.airdb.model.Airport
 import com.tothferenc.airdb.model.Runway
-import com.tothferenc.airdb.repo.AirportRepo
-import com.tothferenc.airdb.repo.CountryRepo
-import com.tothferenc.airdb.repo.RunwayRepo
+import com.tothferenc.airdb.repo._
 
 class QueryService(
     countryRepo: CountryRepo,

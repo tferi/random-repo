@@ -1,9 +1,7 @@
 package com.tothferenc.airdb.service
 
 import com.tothferenc.airdb.model.Country
-import com.tothferenc.airdb.repo.AirportRepo
-import com.tothferenc.airdb.repo.CountryRepo
-import com.tothferenc.airdb.repo.RunwayRepo
+import com.tothferenc.airdb.repo._
 
 class ReportService(
     countryRepo: CountryRepo,
@@ -17,8 +15,8 @@ class ReportService(
     countryRepo.byCode(countryCode).map(_ -> count)
   }
 
-  def topBottomCountriesByAirportCount(top: Int, bottom: Int): (Array[(Country, Int)], Array[(Country, Int)]) = {
-    val airportCountByCountryAsc = airportRepo.countsByCountry.toArray.sortBy(_._2)
+  def topBottomCountriesByAirportCount(top: Int, bottom: Int): (Vector[(Country, Int)], Vector[(Country, Int)]) = {
+    val airportCountByCountryAsc = airportRepo.countsByCountry.toVector.sortBy(_._2)
     val countryCount = airportCountByCountryAsc.length
 
     val lowest = airportCountByCountryAsc.take(top).flatMap(countryResolver)

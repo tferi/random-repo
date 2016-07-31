@@ -6,7 +6,7 @@ import org.specs2.mutable.Specification
 
 class CountryRepoSpec extends Specification {
 
-  val repo = new CountryRepo(Config.test.countriesUrl)
+  val repo = new CsvBasedCountryRepo(Config.test.countriesUrl)
 
   "byName" should {
     "yield the expected result if present" in {
