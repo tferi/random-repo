@@ -15,7 +15,7 @@ object Main {
     val out: PrintStream = System.out
 
     val queryProcessor = new QueryProcessor(queryService)
-    val reportProcessor = new ReportProcessor(reportService)
+    val reportProcessor = new ReportProcessor(reportService, config.reportConfig)
 
     val cmdInterface = new CmdInterface(queryProcessor, reportProcessor)
 

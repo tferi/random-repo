@@ -10,9 +10,9 @@ import com.tothferenc.airdb.service.impl.RepoBasedReportService
 object Bootstrap {
 
   def getServices(config: Config): Services = {
-    val countryRepo = new CsvBasedCountryRepo(config.countriesUrl)
-    val airportRepo = new CsvBasedAirportRepo(config.airportsUrl)
-    val runwayRepo = new CsvBasedRunwayRepo(config.runwaysUrl)
+    val countryRepo = new CsvBasedCountryRepo(config.csvLocations.countriesUrl)
+    val airportRepo = new CsvBasedAirportRepo(config.csvLocations.airportsUrl)
+    val runwayRepo = new CsvBasedRunwayRepo(config.csvLocations.runwaysUrl)
 
     val queryService = new RepoBasedQueryService(
       countryRepo,

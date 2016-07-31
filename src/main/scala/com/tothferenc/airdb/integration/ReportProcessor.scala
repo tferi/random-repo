@@ -2,10 +2,11 @@ package com.tothferenc.airdb.integration
 
 import java.io.PrintStream
 
+import com.tothferenc.airdb.ReportConfig
 import com.tothferenc.airdb.model.Country
 import com.tothferenc.airdb.service.ReportService
 
-class ReportProcessor(reportService: ReportService) {
+class ReportProcessor(reportService: ReportService, reportConfig: ReportConfig) {
 
   def printReports()(implicit out: PrintStream): Unit = {
     printTopBottomReport()
@@ -18,7 +19,7 @@ class ReportProcessor(reportService: ReportService) {
       out.println(s"${country.name} with $count airports.")
     }
 
-    val (top, bottom) = reportService.topBottomCountriesByAirportCount(10, 10)
+    val (top, bottom) = reportService.topBottomCountriesByAirportCount(reportConfig.topLimit, reportConfig.bottomLimit)
     val print = (printCountry _).tupled
 
     out.println("Top countries:")
